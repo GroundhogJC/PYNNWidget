@@ -15,11 +15,20 @@
 	class PytorchNN extends HTMLElement {
 		constructor() {
 			super(); 
+
 			let shadowRoot = this.attachShadow({mode: "open"});
-			shadowRoot.appendChild(template.content.cloneNode(true));
+			let newNode = template.content.cloneNode(true)
+			shadowRoot.appendChild(newNode);
+
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
+
+				const jsonData = callNNService();
+				var p = document.createElement('p');
+			    p.innerHTML = jsonData;
+
+				newNode.appendChild(p);
 			});
 			this._props = {};
 		}
@@ -30,6 +39,13 @@
 
 		onCustomWidgetAfterUpdate(changedProperties) {
 			
+		}
+
+		async function callNNService() {
+		  const response = await fetch("http://127.0.0.1:5000/api/v1/resources/models/cnn");
+		  const jsonData = await response.json();
+		  console.log(jsonData);
+		  return jsonData;
 		}
 	}
 

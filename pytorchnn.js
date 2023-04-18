@@ -24,6 +24,7 @@
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
 
+				/*
 				callNNService().then(
 					function(jsonData) {
 						if(jsonData != null) {
@@ -42,7 +43,7 @@
 					function(err) {
 						console.log(err);
 					}
-				);
+				);*//
 			});
 			this._props = {};
 		}

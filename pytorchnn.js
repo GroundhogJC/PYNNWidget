@@ -15,16 +15,12 @@
 	class PytorchNN extends HTMLElement {
 		constructor() {
 			super(); 
-
 			let shadowRoot = this.attachShadow({mode: "open"});
-			let newNode = template.content.cloneNode(true);
-			shadowRoot.appendChild(newNode);
-
+			let nNode = template.content.cloneNode(true);
+			shadowRoot.appendChild(nNode);
 			this.addEventListener("click", event => {
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
-
-				
 			});
 			this._props = {};
 		}
@@ -34,7 +30,12 @@
 		}
 
 		onCustomWidgetAfterUpdate(changedProperties) {
-			
+			if ("color" in changedProperties) {
+				this.style["background-color"] = changedProperties["color"];
+			}
+			if ("opacity" in changedProperties) {
+				this.style["opacity"] = changedProperties["opacity"];
+			}
 		}
 
 		

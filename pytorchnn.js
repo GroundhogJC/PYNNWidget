@@ -24,26 +24,7 @@
 				var event = new Event("onClick");
 				this.dispatchEvent(event);
 
-				/*
-				callNNService().then(
-					function(jsonData) {
-						if(jsonData != null) {
-							jsonData.forEach(e => {
-								var p = document.createElement('p');
-					    		p.innerHTML = JSON.stringify(e);
-					    		newNode.appendChild(p);
-							});
-						}
-						else {
-							var p = document.createElement('p');
-				    		p.innerHTML = "Data is null.";
-				    		newNode.appendChild(p);
-						}
-					},
-					function(err) {
-						console.log(err);
-					}
-				);*/
+				
 			});
 			this._props = {};
 		}
@@ -56,13 +37,7 @@
 			
 		}
 
-		/*
-		async function callNNService() {
-		  const response = await fetch("http://127.0.0.1:5000/api/v1/resources/models/cnn");
-		  const jsonData = await response.json();
-		  console.log(jsonData);
-		  return jsonData;
-		}*/
+		
 	}
 
 	customElements.define("com-sap-sample-pytorchnn", PytorchNN);
